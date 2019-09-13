@@ -43,9 +43,9 @@
 
 ### Install Grunt
   - Open Command Line and run
-    * npm install grunt-cli -g
-    * npm install -g gulp
-    * npm install
+    * npm install grunt-cli -g    ---- Chỉ chạy 1 lần cho máy tính, vì có -g
+    * npm install -g gulp         ---- Chỉ chạy 1 lần cho máy tính, vì có -g
+    * npm install                 ---- install modules
 
 ### RUN
   - gulp

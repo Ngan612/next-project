@@ -1,16 +1,15 @@
 'use strict';
 
-const gulp = require('gulp'),
+const {task, watch, src, dest, parallel, series} = require('gulp'),
     less = require('gulp-less'),
     autoprefixer = require('gulp-autoprefixer'),
     minifyCSS = require('gulp-minify-css'),
     rename = require('gulp-rename'),
-    connect = require('gulp-connect'),
+    webserver = require('gulp-webserver'),
     clean = require('gulp-clean'),
-    jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
-    babel = require('gulp-babel'),
-    gutil = require('gulp-util');
+    gutil = require('gulp-util'),
+    ip = require('ip');
 
 // Source folder configuration
 const SRC_DIR = {};
@@ -30,8 +29,8 @@ PUBLIC_DIR.root = './frontend/';
 PUBLIC_DIR.js = PUBLIC_DIR.root + 'pub-assets/js/';
 PUBLIC_DIR.css = PUBLIC_DIR.root + 'pub-assets/css/'; // Update this link, example: Y:/TestCMS/pub-assets/css/
 
-gulp.task('scripts', () => {
-    return gulp.src([SRC_DIR.js + 'site.js', SRC_DIR.js + 'plugins/*.js'])
+task('scripts', () => {
+    return src([SRC_DIR.js + 'site.js', SRC_DIR.js + 'plugins/*.js'])
         .pipe(jshint('.jshintrc'))
         .pipe(jshint.reporter('default'))
         .on('error', function(err) {
@@ -43,51 +42,58 @@ gulp.task('scripts', () => {
             babel({presets: ['babel-preset-es2015'].map(require.resolve)})
         )
         .pipe(concat('scripts.js'))
-        .pipe(gulp.dest(PUBLIC_DIR.js))
+        .pipe(dest(PUBLIC_DIR.js))
 });
 
-gulp.task('libs', () => {
-    return gulp.src([SRC_DIR.js + 'jquery-3.2.1.js', SRC_DIR.js + 'plugins/*.js'])
+task('libs', () => {
+    return src([SRC_DIR.js + 'jquery-3.2.1.js', SRC_DIR.js + 'plugins/*.js'])
         .pipe(concat('libs.js'))
-        .pipe(gulp.dest(PUBLIC_DIR.js))
+        .pipe(dest(PUBLIC_DIR.js))
         // .pipe(rename({ suffix: '.min' }))
         // .pipe(uglify())
-        // .pipe(gulp.dest(PUBLIC_DIR.js))
+        // .pipe(dest(PUBLIC_DIR.js))
 });
 
-gulp.task('less', () =>
-    gulp.src([SRC_FILES.less, SRC_DIR.less + 'pages/*.less'])
+task('less', () =>
+    src([SRC_FILES.less, SRC_DIR.less + 'pages/*.less'])
         .pipe(less().on('error', function(err) {
             let displayErr = gutil.colors.red(err.message);
             gutil.log(displayErr);
             this.emit('end');
         }))
         .pipe(autoprefixer('last 3 versions', 'ie 9'))
-        .pipe(gulp.dest(PUBLIC_DIR.css))
+        .pipe(dest(PUBLIC_DIR.css))
         // .pipe(minifyCSS({keepBreaks: false}))
         // .pipe(rename({ suffix: '.min' }))
-        // .pipe(gulp.dest(PUBLIC_DIR.css))
+        // .pipe(dest(PUBLIC_DIR.css))
 );
 
-gulp.task('clean', () => {
-    return gulp.src(PUBLIC_DIR.css, {read: false})
+task('clean', () => {
+    return src(PUBLIC_DIR.css, {read: false})
         .pipe(clean());
 });
 
-gulp.task('webserver', () =>
-    connect.server({
-        root: PUBLIC_DIR.root,
-        livereload: false,
-        port: 2222,
-        host: 'localhost'
-    })
-);
-
-gulp.task('watch', () => {
-    gulp.watch([SRC_DIR.less + '*.less'], ['less']);
+task('webserver', (done) => {
+    src(PUBLIC_DIR.root)
+    .pipe(webserver({
+        host: ip.address(),
+        port: process.env.PORT || 3000,
+        directoryListing: true,
+        open: '/index.html',
+        fallback: '/index.html'
+    }));
+    done();
 });
 
-gulp.task('server', ['watch', 'webserver']);
-gulp.task('build', ['less', 'watch']);
-gulp.task('default', ['clean'], () => { gulp.run(['build', 'server']); });
-gulp.task('en', ['clean'], () => { gulp.run(['build', 'server']); });
+task('watch', () => {
+});
+task('watch', (done) => {
+    watch([SRC_DIR.less + '*.less'], series('less'));
+    done();
+});
+task('build',
+    parallel('less', 'watch')
+);
+task('default',
+    series('clean', 'build', 'webserver')
+);

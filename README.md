@@ -44,7 +44,6 @@
 ### Install Grunt
   - Open Command Line and run
     * npm install grunt-cli -g
-    * npm install
     * npm install -g gulp
     * npm install
 

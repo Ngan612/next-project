@@ -85,8 +85,6 @@ task('webserver', (done) => {
     done();
 });
 
-task('watch', () => {
-});
 task('watch', (done) => {
     watch([SRC_DIR.less + '*.less'], series('less'));
     done();

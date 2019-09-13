@@ -1,0 +1,82 @@
+// Typography
+@fonticon: "icomoon";
+@sans-serif: Helvetica, Arial, sans-serif; // Font ko chân
+@serif: Georgia, "Times New Roman", Times, serif; // Font có chân
+@monospace: Monaco, Menlo, Consolas, "Courier New", monospace;
+@font-family-base: @sans-serif;
+@font-size: 1.4rem;
+@font-button: 1.4rem;
+@line-height-tag-p: round((20 / 14), 3);
+@h1-size: 20px;
+@h2-size: 18px;
+@h3-size: 16px;
+@h4-size: 14px;
+@h5-size: 12px;
+@h6-size: 10px;
+@h1-size-mobile: 20px;
+@h2-size-mobile: 18px;
+@h3-size-mobile: 16px;
+@h4-size-mobile: 14px;
+@h5-size-mobile: 12px;
+@h6-size-mobile: 10px;
+
+.fonticon() {font-family: @fonticon;}
+.sans-serif() {font-family: @sans-serif;}
+.serif() {font-family: @serif;}
+.monospace() {font-family: @monospace;}
+
+// Path image
+@img: "../images"; // background-image: url("@{img}/img-1.png");
+
+// Color
+@color00: transparent;
+@color01: #fff;
+@color02: #f1f1f1;
+@color03: #ddd;
+@color04: #ccc;
+@color05: #c0c0c0;
+@color06: #bbb;
+@color07: #aaa;
+@color08: #999;
+@color09: #666;
+@color10: #333;
+@color11: #000;
+@color12: #ff0000;
+@color13: #2199e8;
+@color14: #3adb76;
+
+// Important
+@bgd-body: #fff;
+@bgd-input: #fff;
+@bgd-invalid: #ddd;
+
+@text-color: #333;
+@color-input: #333;
+@border-input: #333;
+@placeholder: #aaa;
+@invalid: #ff0000; //color invalid input
+
+// Link
+@link: #ff0000;
+@link-hover: #333;
+
+// Grid System
+@grid-columns: 12;
+@grid-gutter: 20px;
+
+@xs-min: 0;
+@sm-min: 544px;
+@md-min: 768px;
+@lg-min: 992px;
+@xl-min: 1200px;
+
+@xs-max: (@sm-min - 1);
+@sm-max: (@md-min - 1);
+@md-max: (@lg-min - 1);
+@lg-max: (@xl-min - 1);
+
+// With of .container
+@grid-sm: 576px;
+@grid-md: 720px;
+@grid-lg: 940px;
+@grid-xl: 1140px;

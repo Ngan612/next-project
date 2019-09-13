@@ -1,0 +1,148 @@
+// Visible
+// Hidden
+// Hidden Down
+// Hidden Up
+// Hidden Print
+//--------------//
+.antialiased {
+  .antialiased(); // Fix font iOS
+}
+.clearfix {
+  .clearfix();
+}
+.center-block {
+  .center-block();
+}
+.pull-right {
+  float: right !important;
+}
+.pull-left {
+  float: left !important;
+}
+.text-left {
+  text-align: left !important;
+}
+.text-right {
+  text-align: right !important;
+}
+.text-center {
+  text-align: center !important;
+}
+.text-justify {
+  text-align: justify !important;
+}
+.text-lowercase {
+  text-transform: lowercase;
+}
+.text-uppercase {
+  text-transform: uppercase;
+}
+.text-capitalize {
+  text-transform: capitalize;
+}
+.text-hide {
+  .text-hide();
+}
+.text-truncate {
+  .text-truncate();
+}
+
+// Hidden
+.hidden {
+  display: none !important;
+}
+.hidden-xs {
+  @media (max-width: @xs-max) {
+    display: none !important;
+  }
+}
+.hidden-sm {
+  @media (min-width: @sm-min) and (max-width: @sm-max) {
+    display: none !important;
+  }
+}
+.hidden-md {
+  @media (min-width: @md-min) and (max-width: @md-max) {
+    display: none !important;
+  }
+}
+.hidden-lg {
+  @media (min-width: @lg-min) {
+    display: none !important;
+  }
+}
+.hidden-xl {
+  @media (min-width: @xl-min) {
+    display: none !important;
+  }
+}
+
+// Hidden Down
+.hidden-sm-down {
+  @media (max-width: @sm-max) {
+    display: none !important;
+  }
+}
+.hidden-md-down {
+  @media (max-width: @md-max) {
+    display: none !important;
+  }
+}
+.hidden-lg-down {
+  @media (max-width: @lg-max) {
+    display: none !important;
+  }
+}
+.hidden-xl-down {
+  display: none !important;
+}
+// Hidden Up
+.hidden-xs-up {
+  display: none !important;
+}
+.hidden-sm-up {
+  @media (min-width: @sm-min) {
+    display: none !important;
+  }
+}
+.hidden-md-up {
+  @media (min-width: @md-min) {
+    display: none !important;
+  }
+}
+.hidden-lg-up {
+  @media (min-width: @lg-min) {
+    display: none !important;
+  }
+}
+
+// Print
+.visible-print-table {
+  display: none !important;
+  @media print {
+    display: table !important;
+  }
+}
+.visible-print-block {
+  display: none !important;
+  @media print {
+    display: block !important;
+  }
+}
+.visible-print-inline {
+  display: none !important;
+  @media print {
+    display: inline !important;
+  }
+}
+.visible-print-inline-block {
+  display: none !important;
+  @media print {
+    display: inline-block !important;
+  }
+}
+.hidden-print {
+  @media print {
+    display: none !important;
+  }
+}

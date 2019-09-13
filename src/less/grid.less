@@ -1,0 +1,53 @@
+// Variable
+@import "libs/variable.less";
+// Mixin
+@import "mixins/mixin.less";
+// Mixin
+@import "mixins/grid.less";
+
+/* Begin Grid */
+.container {
+  .grid-fixed();
+  @media (min-width: @sm-min) {
+    max-width: @grid-sm;
+  }
+  @media (min-width: @md-min) {
+    max-width: @grid-md;
+  }
+  @media (min-width: @lg-min) {
+    max-width: @grid-lg;
+  }
+  @media (min-width: @xl-min) {
+    max-width: @grid-xl;
+  }
+}
+.container-fluid {
+  .grid-fixed();
+}
+.row {
+  .make-row();
+  &.no-gutter {
+    margin-right: 0;
+    margin-left: 0;
+    & > [class^="col-"],
+    & > [class*=" col-"] {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+}
+.make-grid-columns();
+.make-grid(xs);
+@media (min-width: @sm-min) {
+  .make-grid(sm);
+}
+@media (min-width: @md-min) {
+  .make-grid(md);
+}
+@media (min-width: @lg-min) {
+  .make-grid(lg);
+}
+@media (min-width: @xl-min) {
+  .make-grid(xl);
+}
+/* End Grid */

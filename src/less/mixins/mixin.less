@@ -1,0 +1,282 @@
+// Gradient
+@import "gradient.less";
+// Prefixer
+@import "prefixer.less";
+// Flex
+@import "flex.less";
+
+// CSS reset
+.cssreset() {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+// Link color
+.link-color(@color, @color-hover: @color) {
+  color: @color;
+  .transition(all .25s ease);
+  &:hover {
+    color: @color-hover;
+  }
+}
+// Hide text
+.text-hide() {
+  font-size: 0;
+  color: transparent;
+  text-shadow: none;
+  border: none;
+}
+.antialiased() {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+// https://css-tricks.com/almanac/properties/f/font-feature-settings/
+.font-feature(@target) {
+  -webkit-font-feature-settings: @target;
+  -moz-font-feature-settings: @target;
+  -ms-font-feature-settings: @target;
+  -o-font-feature-settings: @target;
+  font-feature-settings: @target;
+}
+// Center-align a block level element
+.center-block() {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+// Font-size: PX to REM
+.font-size(@target: 10px, @default: 10px) {
+  font-size: @target;
+  font-size: round((@target / @default), 3) + 0rem;
+}
+// Line height
+.line-height(@target: @font-size, @default: @font-size) {
+  line-height: round((@target / @default), 3) + 0em;
+}
+// Sizing shortcuts
+.size(@width, @height: @width) {
+  width: @width;
+  height: @height;
+}
+// Placeholder text
+.placeholder(@color: @placeholder-color) {
+  &:-moz-placeholder {color: @color;}
+  &::-moz-placeholder {color: @color; opacity: 1;}
+  &:-ms-input-placeholder {color: @color !important;}
+  &::-webkit-input-placeholder {color: @color;}
+}
+// Text truncate ...
+.text-truncate() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.invisible() {
+  opacity: 0;
+  visibility: hidden;
+}
+.visible() {
+  opacity: 1;
+  visibility: visible;
+}
+// Clearfix
+.clearfix() {
+  &:before, &:after {
+    display: table;
+    content: "";
+    clear: both;
+  }
+}
+.box-decoration-break(@value: clone) {//clone, slice, unset - Use padding, margin for inline tag.
+  -webkit-box-decoration-break: @value;
+       -o-box-decoration-break: @value;
+          box-decoration-break: @value;
+}
+
+.columns(@columns) {
+  -webkit-columns: @columns;
+          columns: @columns;
+}
+
+.break-inside(@value: avoid) {
+  -webkit-column-break-inside: avoid;
+          break-inside: avoid;
+}
+
+// Margins
+// .margins(30px 40px 50px);
+.margins(@values) {
+  .loop(@i) when (@i <= length(@values)) {
+    @value: extract(@values, @i);
+    .margin-top-@{value} {margin-top: @value * 1px;}
+    .margin-right-@{value} {margin-right: @value * 1px;}
+    .margin-bottom-@{value} {margin-bottom: @value * 1px;}
+    .margin-left-@{value} {margin-left: @value * 1px;}
+    .loop(@i + 1);
+  }
+  .loop(1);
+
+  @media (max-width: @xs-max) {
+    .media(@j) when (@j <= length(@values)) {
+      @value: extract(@values, @j);
+      .margin-top-@{value} {margin-top: @value / 2px;}
+      .margin-right-@{value} {margin-right: @value / 2px;}
+      .margin-bottom-@{value} {margin-bottom: @value / 2px;}
+      .margin-left-@{value} {margin-left: @value / 2px;}
+      .media(@j + 1);
+    }
+    .media(1);
+  }
+}
+// Position
+.position(@position: null, @coordinates: null) {
+  & when (@coordinates = null) {
+    & when (@position = null) {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    & when not (@position = null) {
+      & when not (isnumber(@position)) and (length(@position) = 1) {
+        position: @position;
+      }
+
+      & when (length(@position) = 1) and (isnumber(@position)) {
+        @top: @position;
+        position: absolute;
+        top: @top;
+        right: @top;
+        bottom: @top;
+        left: @top;
+      }
+
+      & when (length(@position) > 1) {
+        @coordinates: @position;
+        @top: extract(@coordinates, 1);
+        @right: extract(@coordinates, 2);
+        @bottom: extract(@coordinates, 3);
+        @left: extract(@coordinates, 4);
+        position: absolute;
+        & when (isnumber(@top)) {top: @top;}
+        & when (isnumber(@right)) {right: @right;}
+        & when (isnumber(@bottom)) {bottom: @bottom;}
+        & when (isnumber(@left)) {left: @left;}
+      }
+    }
+  }
+
+  & when not (@coordinates = null) {
+    position: @position;
+    & when (length(@coordinates) = 1) {
+      @top: @coordinates;
+      top: @top;
+      right: @top;
+      bottom: @top;
+      left: @top;
+    }
+
+    & when (length(@coordinates) > 1) {
+      @top: extract(@coordinates, 1);
+      @right: extract(@coordinates, 2);
+      @bottom: extract(@coordinates, 3);
+      @left: extract(@coordinates, 4);
+      & when (isnumber(@top)) {top: @top;}
+      & when (isnumber(@right)) {right: @right;}
+      & when (isnumber(@bottom)) {bottom: @bottom;}
+      & when (isnumber(@left)) {left: @left;}
+    }
+  }
+}
+
+// Triangle
+.triangle-base() {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  -moz-transform: scale(.9999);
+}
+.triangle(@direction, @size, @color) {
+  .triangle(@direction, @size * 2, @size, @color);
+}
+.triangle(@direction, @width, @height, @color) when (@direction = up) {
+  .triangle-base();
+  border-left: (@width / 2) solid transparent;
+  border-right: (@width / 2) solid transparent;
+  border-bottom: @height solid @color;
+}
+.triangle(@direction, @width, @height, @color) when (@direction = down) {
+  .triangle-base();
+  border-left: (@width / 2) solid transparent;
+  border-right: (@width / 2) solid transparent;
+  border-top: @height solid @color;
+}
+.triangle(@direction, @width, @height, @color) when (@direction = left) {
+  .triangle-base();
+  border-top: (@height / 2) solid transparent;
+  border-bottom: (@height / 2) solid transparent;
+  border-right: @width solid @color;
+}
+.triangle(@direction, @width, @height, @color) when (@direction = right) {
+  .triangle-base();
+  border-top: (@height / 2) solid transparent;
+  border-bottom: (@height / 2) solid transparent;
+  border-left: @width solid @color;
+}
+.triangle(@direction, @width, @height, @color) when (@direction = upleft) {
+  .triangle-base();
+  border-top: @height solid @color;
+  border-right: @width solid transparent;
+}
+.triangle(@direction, @width, @height, @color) when (@direction = upright) {
+  .triangle-base();
+  border-top: @height solid @color;
+  border-left: @width solid transparent;
+}
+.triangle(@direction, @width, @height, @color) when (@direction = downleft) {
+  .triangle-base();
+  border-bottom: @height solid @color;
+  border-right: @width solid transparent;
+}
+.triangle(@direction, @width, @height, @color) when (@direction = downright) {
+  .triangle-base();
+  border-bottom: @height solid @color;
+  border-left: @width solid transparent;
+}
+// Background Image Retina
+.img-retina(@image; @retina; @width-retina: 100%; @height-retina: 100%) {
+  background-image: url("@{image}");
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (min--moz-device-pixel-ratio: 2),
+  only screen and (-o-min-device-pixel-ratio: 2/1),
+  only screen and (min-device-pixel-ratio: 2),
+  only screen and (min-resolution: 192dpi),
+  only screen and (min-resolution: 2dppx) {
+    background-image: url("@{retina}");
+    background-size: @width-retina @height-retina;
+  }
+}
+// Custome default sroll bar
+.scrollbar(@width, @thumbBg, @trackBg) {
+  &::-webkit-scrollbar {
+    width: @width;
+  }
+  &::-webkit-scrollbar-thumb {
+    .border-radius(0);
+    background: @thumbBg;
+  }
+  &::-webkit-scrollbar-track {
+    .border-radius(0);
+    background: @trackBg;
+  }
+}
+
+
+

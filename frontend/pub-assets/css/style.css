@@ -1,0 +1,198 @@
+/* Begin Common */
+.relative {
+  position: relative;
+}
+.bgd-silver {
+  background-color: silver !important;
+}
+.bgd-light-grey {
+  background-color: #f1f1f1 !important;
+}
+.bgd-dark-grey {
+  background-color: #666 !important;
+}
+.red-text {
+  color: red !important;
+}
+.link {
+  position: relative;
+  font-size: 20px;
+  font-size: 2rem;
+  text-decoration: underline;
+  color: #ff0000;
+  -webkit-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+.link:hover {
+  color: #ff0000;
+}
+.link:hover {
+  text-decoration: none;
+}
+.link i {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-38%);
+  -ms-transform: translateY(-38%);
+  transform: translateY(-38%);
+  font-size: .8em;
+}
+.pagination {
+  display: inline-block;
+}
+.pagination li {
+  float: left;
+  margin: 0 5px;
+  text-align: center;
+}
+.pagination li.number ul {
+  margin: 0 -5px;
+}
+.pagination li.active a {
+  color: #fff;
+  background-color: #ccc;
+}
+.pagination li a {
+  display: block;
+  width: 30px;
+  height: 30px;
+  font-size: 14px;
+  font-size: 1.4rem;
+  color: #333;
+  border: 1px solid #666;
+  line-height: 30px;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.pagination li a:hover {
+  color: #fff;
+  background-color: #c0c0c0;
+}
+.pagination li a i {
+  line-height: 30px;
+}
+.pagination li.unavailable {
+  pointer-events: none;
+}
+.pagination li.unavailable span {
+  line-height: 24px;
+}
+.pagination .number a span {
+  display: none;
+}
+@media (max-width: 767px) {
+  .pagination {
+    width: 100%;
+  }
+  .pagination .prev-page {
+    float: left;
+  }
+  .pagination .next-page {
+    float: right;
+  }
+  .pagination .number {
+    display: block;
+    float: none;
+    overflow: hidden;
+  }
+  .pagination .number li {
+    display: none;
+  }
+  .pagination .number li.active {
+    display: inline-block;
+    float: none;
+  }
+  .pagination .number a span {
+    display: inline;
+  }
+}
+.price {
+  display: block;
+}
+.price .new-price,
+.price .old-price {
+  display: inline-block;
+  color: #333;
+}
+.price .new-price {
+  font-weight: bold;
+}
+.price .old-price {
+  color: #999;
+}
+.breadcrumbs li {
+  display: inline-block;
+}
+.breadcrumbs i {
+  position: relative;
+  top: 2px;
+}
+.divider {
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  clear: both;
+}
+.divider span {
+  position: relative;
+  display: inline-block;
+  padding: 0 10px;
+}
+.divider span:before,
+.divider span:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 1000px;
+  border-top: 1px solid #ddd;
+}
+.divider span:before {
+  right: 100%;
+}
+.divider span:after {
+  left: 100%;
+}
+.divider span.empty {
+  font-size: 0;
+  padding: 0;
+}
+blockquote {
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+blockquote:before,
+blockquote:after {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 4em;
+  line-height: 0;
+}
+blockquote:before {
+  content: open-quote;
+  margin-right: 0.15em;
+  vertical-align: -0.4em;
+}
+blockquote:after {
+  content: close-quote;
+  margin-left: 0.15em;
+  vertical-align: -0.6em;
+}
+/* End Common */
+/* Begin Structure */
+.inputFocusing {
+  overflow-x: hidden;
+}
+.inputFocusing body {
+  overflow-x: hidden;
+}
+main {
+  margin: 5px 0;
+  padding: 10px;
+  min-height: 2000px;
+}
+footer {
+  padding: 10px;
+}
+/* End Structure */
+/* Block */
+/* End Block */

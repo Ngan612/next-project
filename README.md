@@ -41,7 +41,7 @@
   - Download [Node.js](http://nodejs.org)
   - Ensure you have administrator role when install to set the PATH environment variable
 
-### Install Grunt
+### Install Gulp
   - Open Command Line and run
     * npm install grunt-cli -g    ---- Chỉ chạy 1 lần cho máy tính, vì có -g
     * npm install -g gulp         ---- Chỉ chạy 1 lần cho máy tính, vì có -g

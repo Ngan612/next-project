@@ -2,3 +2,132 @@
 @import "../libs/variable.less";
 // Mixin
 @import "../mixins/mixin.less";
+// Body
+
+.section-1 {
+  padding: 20px 0;
+  text-align: center;
+  background-image: url(/pub-assets/images/section1_bg_mobile.jpg);
+  background-size: cover;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  .main-title {
+    .title {
+      margin-bottom: 15px;
+      line-height: 1.107;
+      color: #5f5f6b;
+    }
+    p {
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+      line-height: 1.285;
+    }
+  }
+  .w_video {
+    margin-bottom: 25px;
+  }
+  .w_button {
+    margin: 0 auto;
+    max-width: 524px;
+    a {
+      display: block;
+      padding: 10px;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #fff;
+      background-color: #37ba70;
+      box-shadow: inset 1px -2px 1px 0 rgba(0,0,0,.2);
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+@media (min-width: 768px) {
+  .section-1{
+    padding: 60px 0 40px;
+    background-image: url(/pub-assets/images/section1_bg.jpg);
+    .main-title {
+      p {
+        font-size: 2rem;
+        line-height: 1.467;
+        letter-spacing: 0.35px;
+      }
+    }
+    .w_button {
+      a {
+        padding: 22px 10px;
+        font-size: 2rem;
+        br {
+          display: none;
+        }
+      }
+    }
+  }
+}
+.section-2 {
+  padding: 30px 15px;
+  .w_thumb {
+    margin-bottom: 20px;
+    img {
+      display: block;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 160px;
+    }
+  }
+  .w_content {
+    .w_title {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+      letter-spacing: .3px;
+      font-weight: 400;
+    }
+    .w_desc {
+      ul {
+        .flex-display(flex);
+        .justify-content(space-between);
+        margin-top: 20px;
+        li {
+          width: calc(100% / 3 - 10px);
+        }
+      }
+    }
+  }
+}
+@media (min-width: 768px) {
+  .section-2 {
+    .w_item {
+      .flex-display(flex);
+      .justify-content(space-between);
+      .align-item(center);
+    }
+    .w_thumb {
+      width: 50%;
+      img {
+        max-width: 100%;
+      }
+    }
+    .w_content {
+      width: 50%;
+      .w_title {
+        margin-bottom: 25px;
+        font-size: 32px;
+      }
+      .w_desc {
+        ul {
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
+}
+.section-3 {}
+.section-4 {}
+.section-5 {}
+.section-6 {}
+.section-7 {}
+.section-8 {}
+.section-9 {}
+.section-10 {}
+.section-10 {}

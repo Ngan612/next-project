@@ -16,8 +16,8 @@ header {
   height: 57px;
   .header-inner {
     .flex-display(flex);
-    justify-content: center;
-    align-items: center;
+    .justify-content(center);
+    .align-items(center);
   }
   .logo-header {
     a {
@@ -28,17 +28,13 @@ header {
   .navigation{
     .menu {
       display: block;
-      position: absolute;
-      right: 6px;
-      top: 25%;
+      .position(25% 6px null null);
       border: none;
       background-color: #fff0;
     }
     .menu-hover {
       display: none;
-      position: absolute;
-      right: 5px;
-      top: 25%;
+      .position(25% 5px null null);
       border: none;
     }
     .nav {

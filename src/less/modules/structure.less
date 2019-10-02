@@ -90,10 +90,23 @@ header {
       }
     }
     .btn-order {
-      padding: 10px 17px;
-      margin-left: 10px;
       color: #fff;
+      letter-spacing: 0.57px;
+      padding: 13px 17px;
+      margin-left: 10px;
+      border-radius: 3px;
       background-color: #19af42;
+      &:after {
+        display: inline-block;
+        font-family: "icomoon";
+        content: "\ea42";
+        font-size: 1.8rem;
+        font-weight: bold;
+        line-height: 1.8px;
+        color: #222;
+        margin-left: 8px;
+        vertical-align: middle;
+      }
       &:hover {
         text-decoration: none;
         opacity: 0.8;
@@ -205,10 +218,6 @@ footer {
     }
     .floating-ft {
       .w_button {
-        span {
-          display: inline-block;
-          vertical-align: middle;
-        }
         a:after {
           display: inline-block;
           font-family: "icomoon";

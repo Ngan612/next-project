@@ -2,3 +2,107 @@
 @import "../libs/variable.less";
 // Mixin
 @import "../mixins/mixin.less";
+// Body
+
+body {
+  font-family: Roboto, sans-serif;
+  .font-size(18px);
+  color: #000;
+  line-height: 1.77777778;
+}
+@media (min-width: 1025px) {
+  .container {
+    max-width: 1040px;
+  }
+}
+
+main {
+  padding: 0;
+}
+
+.section-1 {
+  .container {
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .w_thumb {
+    max-width: 1040px;
+    padding: 15px 0;
+  }
+  h3 {
+    padding: 4px 0;
+    margin-bottom: 0;
+    font-size: 13px;
+    letter-spacing: 0.38px;
+    font-weight: normal;
+    color: rgba(107, 107, 107, 0.64);
+    text-align: center;
+    background-color: #f1f1f1;
+  }
+  @media (max-width: 991px) {
+    .w_inner {
+      flex-flow: row;
+      align-items: center;
+      padding: 0 15px;
+    }
+    .w_thumb {
+      padding: 9px 0 11px;
+    }
+    h3 {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.8);
+      background-color: #000;
+    }
+  }
+}
+if (diem < 4) {
+    document.write('Học Lại');
+}
+else {
+  if (diem >= 4 && diem < 5.5) {
+    document.write(' Loại D');
+  }
+  else {
+    if (diem >= 5.5 && diem < 7) {
+      document.write('Loai C');
+    }
+    else {
+      if (diem >= 7 && diem < 8.5) {
+        document.write('Loại B');
+      }
+      else {
+        if (diem >= 8.5 && diem <= 10) {
+            document.write('Loai A');
+        }
+        else {
+          document.write('Điểm không hợp lệ');
+        }
+      }
+    }
+  }
+}
+<script type="text/javascript">
+  for(var i=1;i<=10;i++){
+    document.write('Dòng số: '+ i + '<br/>');
+  }
+</script>
+
+
+//khởi tạo biến i bằng 1
+var i = 1;
+do {
+    //in ra i hiện tại
+  document.write(i+ '<br>');
+    //tiến hành cộng i thêm 1 đơn vị
+  i++;
+//xét điều kiện i>10 thì sẽ dừng 
+} while(i <= 10);
+
+<script type="text/javascript">
+    if(result = prompt('Chào bạn, năm nay bạn bao nhiêu tuổi?')){
+      document.write(result);
+    }else{
+      document.write('Sao không trả lời à bạn?');
+    }
+</script>

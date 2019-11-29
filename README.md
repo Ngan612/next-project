@@ -52,3 +52,5 @@
 
 ## Notes
   - Use **rimraf** to delete **node_modules** folder. See [rimraf](https://github.com/isaacs/rimraf)
+  tạo brand: $ git branch <branchname>,
+  chuyển brand: $ git checkout <branch>
